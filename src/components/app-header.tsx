@@ -1,3 +1,4 @@
+
 'use client'
 
 import Link from "next/link";
@@ -10,7 +11,8 @@ import {
   Search,
   Shield,
   FileText,
-  GraduationCap
+  GraduationCap,
+  User
 } from "lucide-react";
 import {
   Sheet,
@@ -65,6 +67,13 @@ export function AppHeader() {
                 className="w-full rounded-lg bg-background pl-8"
               />
             </div>
+            <Link
+              href="/profile"
+              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+            >
+              <User className="h-5 w-5" />
+              Profile
+            </Link>
             <Link
               href="/survey"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
@@ -127,6 +136,7 @@ export function AppHeader() {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => router.push('/profile')}>Profile</DropdownMenuItem>
           <DropdownMenuItem>Settings</DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />

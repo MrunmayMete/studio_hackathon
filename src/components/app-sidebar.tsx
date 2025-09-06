@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -10,7 +11,8 @@ import {
   LifeBuoy,
   FileText,
   GraduationCap,
-  Search
+  Search,
+  User
 } from 'lucide-react';
 
 import {
@@ -24,6 +26,7 @@ import { cn } from '@/lib/utils';
 import { Input } from './ui/input';
 
 const navLinks = [
+  { href: '/profile', icon: User, label: 'Profile' },
   { href: '/survey', icon: FileText, label: 'Survey' },
   { href: '/learn', icon: GraduationCap, label: 'Learn' },
   { href: '/circles', icon: Users, label: 'Circles' },
