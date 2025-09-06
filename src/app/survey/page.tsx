@@ -32,6 +32,8 @@ const steps = [
   { id: '04', title: 'Final Touches' },
 ]
 
+const defaultGoals = ['Certification Exam', 'Job Preparation', 'Personal Development', 'Skill Upskilling'];
+
 export default function SurveyPage() {
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(0)
@@ -45,6 +47,9 @@ export default function SurveyPage() {
     obstacles: '',
     competency: 'Beginner',
   })
+  const [otherGoal, setOtherGoal] = useState('');
+  const [isOtherGoalChecked, setIsOtherGoalChecked] = useState(false);
+
 
   const handleChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -64,13 +69,19 @@ export default function SurveyPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Survey Data:', formData)
+    
+    const finalGoals = [...formData.goals];
+    if (isOtherGoalChecked && otherGoal.trim() !== '') {
+        finalGoals.push(otherGoal.trim());
+    }
+
+    console.log('Survey Data:', {...formData, goals: finalGoals});
     // In a real app, you would save this data.
     // We use localStorage to simulate that the user has completed the survey.
     localStorage.setItem('surveyCompleted', 'true');
     const params = new URLSearchParams()
     params.set('domain', formData.domain)
-    params.set('goals', formData.goals.join(','))
+    params.set('goals', finalGoals.join(','))
     router.push(`/assessment?${params.toString()}`)
   }
   
@@ -130,7 +141,7 @@ export default function SurveyPage() {
                 <div className="space-y-2">
                   <Label>What are your primary goals?</Label>
                   <div className="flex flex-col space-y-2">
-                    {['Certification Exam', 'Job Preparation', 'Personal Development', 'Skill Upskilling'].map((goal) => (
+                    {defaultGoals.map((goal) => (
                       <div key={goal} className="flex items-center space-x-2">
                         <Checkbox
                           id={goal}
@@ -145,6 +156,24 @@ export default function SurveyPage() {
                         <Label htmlFor={goal} className="font-normal">{goal}</Label>
                       </div>
                     ))}
+                    <div className="flex items-center space-x-2">
+                        <Checkbox
+                          id="other-goal"
+                          checked={isOtherGoalChecked}
+                          onCheckedChange={(checked) => setIsOtherGoalChecked(!!checked)}
+                        />
+                        <Label htmlFor="other-goal" className="font-normal">Other</Label>
+                    </div>
+                    {isOtherGoalChecked && (
+                        <div className='pl-6'>
+                            <Input
+                                id="other-goal-input"
+                                placeholder="Please specify your goal"
+                                value={otherGoal}
+                                onChange={(e) => setOtherGoal(e.target.value)}
+                            />
+                        </div>
+                    )}
                   </div>
                 </div>
                  <div className="space-y-2">
