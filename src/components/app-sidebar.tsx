@@ -12,7 +12,8 @@ import {
   FileText,
   GraduationCap,
   Search,
-  User
+  User,
+  Home
 } from 'lucide-react';
 
 import {
@@ -26,6 +27,7 @@ import { cn } from '@/lib/utils';
 import { Input } from './ui/input';
 
 const navLinks = [
+  { href: '/dashboard', icon: Home, label: 'Dashboard' },
   { href: '/profile', icon: User, label: 'Profile' },
   { href: '/survey', icon: FileText, label: 'Survey' },
   { href: '/learn', icon: GraduationCap, label: 'Learn' },
@@ -60,13 +62,13 @@ export function AppSidebar() {
             <TooltipTrigger asChild>
                 <Link
                     href="/dashboard"
-                    className={cn("group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base", isActive('/dashboard') ? 'bg-primary' : 'bg-muted text-muted-foreground')}
+                    className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
                     >
-                    <SkillsphereLogo className={cn("h-5 w-5 transition-all group-hover:scale-110", isActive('/dashboard') ? 'text-primary-foreground' : 'text-primary' )} />
+                    <SkillsphereLogo className="h-5 w-5 transition-all group-hover:scale-110 text-primary-foreground" />
                     <span className="sr-only">Skillsphere</span>
                 </Link>
              </TooltipTrigger>
-             <TooltipContent side="right">Dashboard</TooltipContent>
+             <TooltipContent side="right">Skillsphere</TooltipContent>
           </Tooltip>
           {navLinks.map(({ href, icon: Icon, label }) => (
             <Tooltip key={label}>
@@ -87,14 +89,6 @@ export function AppSidebar() {
           ))}
         </nav>
         <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-           <div className="relative">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                    type="search"
-                    placeholder="Search..."
-                    className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
-                />
-            </div>
           {secondaryNavLinks.map(({ href, icon: Icon, label }) => (
             <Tooltip key={label}>
                 <TooltipTrigger asChild>
