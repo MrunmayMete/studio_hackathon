@@ -1,17 +1,28 @@
+'use client';
+
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { user } from "@/lib/data";
-import { Check, Goal, Star } from "lucide-react";
+import { Goal, Star } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export function ProfileStrengthCard() {
+  const [competencyScore, setCompetencyScore] = useState(0);
   const goalProgress = (user.goals.length / 3) * 100; // Assuming 3 is a target number of goals
-  const competencyScore = user.testScores.diagnostic;
+
+  useEffect(() => {
+    // This runs on the client, so window is available.
+    const storedScore = localStorage.getItem('diagnosticScore');
+    if (storedScore) {
+        setCompetencyScore(parseInt(storedScore, 10));
+    }
+  }, []);
+
 
   return (
     <Card>

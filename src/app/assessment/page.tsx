@@ -73,11 +73,14 @@ function AssessmentComponent() {
         incorrectTopics.push(q.topic)
       }
     })
+    
+    const scorePercentage = Math.round((newScore / questions.length) * 100);
     setScore(newScore)
     setSubmitted(true)
     
-    // Save weak topics to localStorage
+    // Save weak topics and score to localStorage
     localStorage.setItem('weakTopics', JSON.stringify(incorrectTopics));
+    localStorage.setItem('diagnosticScore', scorePercentage.toString());
   }
 
   const handleGoToDashboard = () => {
