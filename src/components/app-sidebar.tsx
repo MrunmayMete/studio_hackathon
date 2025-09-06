@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Home,
   Users,
   BookOpen,
   Settings,
@@ -23,7 +22,6 @@ import { SkillsphereLogo } from '@/lib/icons';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/dashboard', icon: Home, label: 'Dashboard' },
   { href: '/survey', icon: FileText, label: 'Survey' },
   { href: '/learn', icon: GraduationCap, label: 'Learn' },
   { href: '/circles', icon: Users, label: 'Circles' },
@@ -38,6 +36,9 @@ export function AppSidebar() {
     if (href === '/learn') {
         return pathname.startsWith('/learn');
     }
+     if (href === '/dashboard') {
+        return pathname === href;
+    }
     return pathname === href;
   };
 
@@ -45,13 +46,18 @@ export function AppSidebar() {
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
       <TooltipProvider>
         <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
-          <Link
-            href="/dashboard"
-            className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-          >
-            <SkillsphereLogo className="h-5 w-5 transition-all group-hover:scale-110" />
-            <span className="sr-only">Skillsphere</span>
-          </Link>
+          <Tooltip>
+            <TooltipTrigger asChild>
+                <Link
+                    href="/dashboard"
+                    className={cn("group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base", isActive('/dashboard') ? 'bg-primary' : 'bg-muted text-muted-foreground')}
+                    >
+                    <SkillsphereLogo className={cn("h-5 w-5 transition-all group-hover:scale-110", isActive('/dashboard') ? 'text-primary-foreground' : 'text-primary' )} />
+                    <span className="sr-only">Skillsphere</span>
+                </Link>
+             </TooltipTrigger>
+             <TooltipContent side="right">Dashboard</TooltipContent>
+          </Tooltip>
           {navLinks.map(({ href, icon: Icon, label }) => (
             <Tooltip key={label}>
               <TooltipTrigger asChild>

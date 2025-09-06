@@ -58,13 +58,6 @@ export function AppHeader() {
               <span className="sr-only">Skillsphere</span>
             </Link>
             <Link
-              href="/dashboard"
-              className="flex items-center gap-4 px-2.5 text-foreground"
-            >
-              <Home className="h-5 w-5" />
-              Dashboard
-            </Link>
-            <Link
               href="/survey"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
