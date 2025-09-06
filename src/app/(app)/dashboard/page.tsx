@@ -9,8 +9,8 @@ import { ProfileStrengthCard } from "@/components/dashboard/profile-strength-car
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+    <div className="flex flex-col gap-6">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard 
           title="Day Streak" 
           value={user.stats.streak.toString()} 
@@ -31,15 +31,15 @@ export default function DashboardPage() {
         />
          <ProfileStrengthCard />
       </div>
-      <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
-        <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-3 lg:gap-8">
+        <div className="grid auto-rows-max items-start gap-6 lg:col-span-2 lg:gap-8">
           <RecommendationCard />
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
             <CircleComparison />
             <CompetencyChart />
           </div>
         </div>
-        <div className="grid auto-rows-max items-start gap-4 md:gap-8">
+        <div className="grid auto-rows-max items-start gap-6 lg:gap-8">
            <ActivityFeed />
         </div>
       </div>
