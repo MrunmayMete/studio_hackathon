@@ -1,7 +1,13 @@
 export const user = {
+  id: "u1",
   name: "Alex Doe",
   email: "alex.doe@example.com",
   avatar: "https://picsum.photos/100/100",
+  skillLevel: "Beginner",
+  goals: ["Job Prep", "Certification Exam"],
+  selfAssessment: { math: "low", english: "high" },
+  testScores: { diagnostic: 60, quizzes: [80, 70] },
+  engagement: { studyTime: 120, streak: 4 }, // studyTime in minutes
   stats: {
     streak: 12,
     points: 1850,

@@ -5,6 +5,7 @@ import { ActivityFeed } from "@/components/dashboard/activity-feed";
 import { CompetencyChart } from "@/components/dashboard/competency-chart";
 import { user } from "@/lib/data";
 import { BookCheck, Target, Zap } from "lucide-react";
+import { ProfileStrengthCard } from "@/components/dashboard/profile-strength-card";
 
 export default function DashboardPage() {
   return (
@@ -28,6 +29,7 @@ export default function DashboardPage() {
           icon={<BookCheck className="h-4 w-4 text-muted-foreground" />}
           description="New badge unlocked"
         />
+         <ProfileStrengthCard />
       </div>
       <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
         <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
