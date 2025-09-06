@@ -19,6 +19,7 @@ import { assessmentQuestions as fallbackQuestions } from '@/lib/assessment-data'
 type Question = {
   id: number;
   question: string;
+  topic: string;
   options: string[];
   correctAnswer: string;
 };
@@ -27,7 +28,7 @@ function AssessmentComponent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   
-  const [questions, setQuestions] = useState<Question[] | null>(null)
+  const [questions, setQuestions] = useState<(GenerateAssessmentOutput['questions'][0])[] | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [submitted, setSubmitted] = useState(false)
@@ -44,13 +45,13 @@ function AssessmentComponent() {
         })
         .catch(err => {
           console.error("Error generating assessment:", err)
-          setQuestions(fallbackQuestions)
+          setQuestions(fallbackQuestions as any)
         })
         .finally(() => {
           setIsLoading(false)
         })
     } else {
-      setQuestions(fallbackQuestions)
+      setQuestions(fallbackQuestions as any)
       setIsLoading(false)
     }
   }, [searchParams])
@@ -64,13 +65,19 @@ function AssessmentComponent() {
     if (!questions) return
 
     let newScore = 0
+    const incorrectTopics: string[] = []
     questions.forEach((q, index) => {
       if (answers[index] === q.correctAnswer) {
         newScore += 1
+      } else {
+        incorrectTopics.push(q.topic)
       }
     })
     setScore(newScore)
     setSubmitted(true)
+    
+    // Save weak topics to localStorage
+    localStorage.setItem('weakTopics', JSON.stringify(incorrectTopics));
   }
 
   const handleGoToDashboard = () => {
