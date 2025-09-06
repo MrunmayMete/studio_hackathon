@@ -9,7 +9,8 @@ import {
   Settings,
   Shield,
   LifeBuoy,
-  Search,
+  Home,
+  LayoutDashboard,
 } from 'lucide-react';
 
 import {
@@ -23,10 +24,10 @@ import { cn } from '@/lib/utils';
 import { Input } from './ui/input';
 
 const navLinks = [
+  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/my-learning', icon: BookOpen, label: 'My Learning' },
   { href: '/circles', icon: Users, label: 'Circles' },
   { href: '/admin/content', icon: Shield, label: 'Admin' },
-  { href: '/search', icon: Search, label: 'Search' },
 ];
 
 const secondaryNavLinks = [
@@ -41,7 +42,6 @@ export function AppSidebar() {
     if (href === '/my-learning') return pathname.startsWith('/my-learning');
     if (href === '/circles') return pathname.startsWith('/circles');
     if (href === '/admin/content') return pathname.startsWith('/admin');
-    if (href === '/search') return pathname.startsWith('/search');
     return pathname === href;
   };
 
