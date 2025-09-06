@@ -9,9 +9,7 @@ import {
   PanelLeft,
   Search,
   Shield,
-  User,
   LifeBuoy,
-  Home
 } from "lucide-react";
 import {
   Sheet,
@@ -32,8 +30,6 @@ import { user } from "@/lib/data";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { SkillsphereLogo } from "@/lib/icons";
 import { useRouter } from "next/navigation";
-import { AppSidebar } from "./app-sidebar";
-import { cn } from "@/lib/utils";
 
 export function AppHeader() {
   const router = useRouter();
@@ -61,13 +57,6 @@ export function AppHeader() {
               <span className="sr-only">Skillsphere</span>
             </Link>
             <Link
-              href="/dashboard"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Home className="h-5 w-5" />
-              Dashboard
-            </Link>
-            <Link
               href="/my-learning"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
@@ -88,6 +77,14 @@ export function AppHeader() {
               <Shield className="h-5 w-5" />
               Admin
             </Link>
+             <div className="relative ml-auto flex-1 md:grow-0">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                type="search"
+                placeholder="Search..."
+                className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
+                />
+            </div>
             <Link
               href="/settings"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
@@ -95,17 +92,16 @@ export function AppHeader() {
               <Settings className="h-5 w-5" />
               Settings
             </Link>
+             <Link
+              href="/support"
+              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+            >
+              <LifeBuoy className="h-5 w-5" />
+              Support
+            </Link>
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="relative ml-auto flex-1 md:grow-0">
-        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          type="search"
-          placeholder="Search..."
-          className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
-        />
-      </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
