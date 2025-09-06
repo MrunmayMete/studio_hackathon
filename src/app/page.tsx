@@ -1,15 +1,15 @@
 import { Button } from '@/components/ui/button'
 import { ArrowRight, BrainCircuit, GraduationCap, Users } from 'lucide-react'
 import Link from 'next/link'
-import { SkillsphereLogo } from '@/lib/icons'
+import { MorningOwlsLogo } from '@/lib/icons'
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <SkillsphereLogo className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold text-foreground">Skillsphere</span>
+          <MorningOwlsLogo className="h-8 w-8 text-primary" />
+          <span className="text-xl font-bold text-foreground">Morning_Owls</span>
         </Link>
         <nav className="flex items-center gap-4">
           <Button variant="ghost" asChild>
@@ -29,7 +29,7 @@ export default function Home() {
               Unlock Your Potential with Personalized Learning
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Skillsphere uses AI to create a unique learning path just for you. Master new vocational skills through bite-sized lessons, interactive quizzes, and community support.
+              Morning_Owls uses AI to create a unique learning path just for you. Master new vocational skills through bite-sized lessons, interactive quizzes, and community support.
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button size="lg" asChild>
@@ -74,7 +74,7 @@ export default function Home() {
         </section>
       </main>
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Skillsphere. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Morning_Owls. All rights reserved.</p>
       </footer>
     </div>
   )

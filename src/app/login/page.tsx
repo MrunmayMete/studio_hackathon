@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { SkillsphereLogo } from "@/lib/icons"
+import { MorningOwlsLogo } from "@/lib/icons"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
@@ -54,8 +54,8 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
         <Link href="/" className="flex items-center justify-center gap-2 mb-6">
-          <SkillsphereLogo className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-bold text-foreground">Skillsphere</span>
+          <MorningOwlsLogo className="h-8 w-8 text-primary" />
+          <span className="text-2xl font-bold text-foreground">Morning_Owls</span>
         </Link>
         <Card>
           <CardHeader className="text-center">

@@ -9,8 +9,8 @@ import {
   Settings,
   Shield,
   LifeBuoy,
-  Home,
   LayoutDashboard,
+  Search,
 } from 'lucide-react';
 
 import {
@@ -19,9 +19,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { SkillsphereLogo } from '@/lib/icons';
+import { MorningOwlsLogo } from '@/lib/icons';
 import { cn } from '@/lib/utils';
-import { Input } from './ui/input';
 
 const navLinks = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -53,8 +52,8 @@ export function AppSidebar() {
             href="/dashboard"
             className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
           >
-            <SkillsphereLogo className="h-4 w-4 transition-all group-hover:scale-110" />
-            <span className="sr-only">Skillsphere</span>
+            <MorningOwlsLogo className="h-4 w-4 transition-all group-hover:scale-110" />
+            <span className="sr-only">Morning_Owls</span>
           </Link>
           {navLinks.map(({ href, icon: Icon, label }) => (
             <Tooltip key={label}>

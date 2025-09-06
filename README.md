@@ -1,6 +1,6 @@
-# Skillsphere - Personalized Micro-Learning Engine
+# Morning_Owls - Personalized Micro-Learning Engine
 
-Welcome to Skillsphere, a full-stack MVP web app for personalized micro-learning, designed for vocational and upskilling learners. This project is built with Next.js, Firebase, and Tailwind CSS, featuring a GenAI-powered recommendation engine.
+Welcome to Morning_Owls, a full-stack MVP web app for personalized micro-learning, designed for vocational and upskilling learners. This project is built with Next.js, Firebase, and Tailwind CSS, featuring a GenAI-powered recommendation engine.
 
 ## Features
 
