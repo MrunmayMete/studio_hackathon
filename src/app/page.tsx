@@ -16,7 +16,7 @@ export default function Home() {
             <Link href="/login">Log In</Link>
           </Button>
           <Button asChild>
-            <Link href="/login">
+            <Link href="/signup">
               Get Started <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -33,7 +33,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button size="lg" asChild>
-                <Link href="/login">
+                <Link href="/signup">
                   Start Learning for Free
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
