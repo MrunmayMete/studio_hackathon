@@ -132,3 +132,84 @@ export const activityFeed = [
     details: "",
   },
 ];
+
+export type MyLearningContent = {
+    id: string;
+    type: 'video' | 'article' | 'quiz';
+    title: string;
+    source: string;
+    url: string;
+    thumbnailUrl: string;
+    duration: string;
+    topics: string[];
+    status: 'Not Started' | 'In Progress' | 'Completed';
+}
+
+export const myLearningContent: MyLearningContent[] = [
+    {
+        id: 'lc1',
+        type: 'video',
+        title: 'Introduction to Residential Wiring',
+        source: 'YouTube',
+        url: 'https://youtube.com',
+        thumbnailUrl: 'https://picsum.photos/600/400?random=20',
+        duration: '15 min',
+        topics: ['Wiring', 'Safety'],
+        status: 'Not Started'
+    },
+    {
+        id: 'lc2',
+        type: 'article',
+        title: 'Understanding the National Electrical Code (NEC)',
+        source: 'NFPA Journal',
+        url: 'https://www.nfpa.org/news-and-research/publications-and-media/nfpa-journal',
+        thumbnailUrl: 'https://picsum.photos/600/400?random=21',
+        duration: '25 min read',
+        topics: ['NEC', 'Code', 'Safety'],
+        status: 'In Progress'
+    },
+    {
+        id: 'lc3',
+        type: 'quiz',
+        title: 'Quiz: Circuit Breaker Fundamentals',
+        source: 'Skillsphere',
+        url: '/learn/Circuit-Breaker-Fundamentals',
+        thumbnailUrl: 'https://picsum.photos/600/400?random=22',
+        duration: '10 questions',
+        topics: ['Circuit Breakers', 'Safety'],
+        status: 'Completed'
+    },
+    {
+        id: 'lc4',
+        type: 'video',
+        title: 'How to Use a Multimeter',
+        source: 'YouTube',
+        url: 'https://youtube.com',
+        thumbnailUrl: 'https://picsum.photos/600/400?random=23',
+        duration: '8 min',
+        topics: ['Tools', 'Diagnostics'],
+        status: 'Not Started'
+    },
+     {
+        id: 'lc5',
+        type: 'article',
+        title: 'A Guide to Different Types of Electrical Wires',
+        source: 'The Spruce',
+        url: 'https://www.thespruce.com/',
+        thumbnailUrl: 'https://picsum.photos/600/400?random=24',
+        duration: '12 min read',
+        topics: ['Wiring', 'Materials'],
+        status: 'Not Started'
+    },
+    {
+        id: 'lc6',
+        type: 'quiz',
+        title: 'Quiz: OSHA Safety Standards',
+        source: 'Skillsphere',
+        url: '/learn/OSHA-Safety-Standards',
+        thumbnailUrl: 'https://picsum.photos/600/400?random=25',
+        duration: '15 questions',
+        topics: ['OSHA', 'Safety'],
+        status: 'Not Started'
+    },
+]

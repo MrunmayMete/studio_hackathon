@@ -79,7 +79,7 @@ export function AppHeader() {
               Circles
             </Link>
             <Link
-              href="#"
+              href="/my-learning"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <BookOpen className="h-5 w-5" />
