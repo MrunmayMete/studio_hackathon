@@ -98,14 +98,14 @@ function AssessmentComponent() {
         <CardHeader>
           <CardTitle>Diagnostic Assessment</CardTitle>
           <CardDescription>
-            Let's see where you stand. Answer these questions to the best of your ability.
+            Let's see where you stand. Answer these questions to the best of your ability. All questions are required.
           </CardDescription>
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="flex justify-center items-center h-64">
+            <div className="flex flex-col justify-center items-center h-64 text-center">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
-              <p className="ml-4">Generating your personalized assessment...</p>
+              <p className="ml-4 mt-4">Generating your personalized assessment...</p>
             </div>
           ) : submitted ? (
             <div className="text-center space-y-4">
@@ -118,7 +118,7 @@ function AssessmentComponent() {
             <form onSubmit={handleSubmit} className="space-y-8">
               {questions?.map((q, index) => (
                 <div key={q.id} className="space-y-4">
-                  <p className="font-semibold">{index + 1}. {q.question}</p>
+                  <p className="font-semibold">{index + 1}. {q.question} <span className="text-destructive">*</span></p>
                   <RadioGroup
                     onValueChange={(value) => handleValueChange(index, value)}
                     value={answers[index]}
@@ -147,7 +147,10 @@ function AssessmentComponent() {
 export default function AssessmentPage() {
     return (
         <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div className="flex flex-col justify-center items-center h-64 text-center">
+              <Loader2 className="h-8 w-8 animate-spin text-primary" />
+              <p className="ml-4 mt-4">Loading Assessment...</p>
+            </div>}>
                 <AssessmentComponent />
             </Suspense>
         </div>

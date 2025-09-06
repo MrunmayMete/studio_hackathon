@@ -34,6 +34,13 @@ const steps = [
 
 const defaultGoals = ['Certification Exam', 'Job Preparation', 'Personal Development', 'Skill Upskilling'];
 
+const RequiredLabel = ({ htmlFor, children }: { htmlFor: string; children: React.ReactNode }) => (
+    <Label htmlFor={htmlFor}>
+        {children} <span className="text-destructive">*</span>
+    </Label>
+);
+
+
 export default function SurveyPage() {
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(0)
@@ -102,7 +109,7 @@ export default function SurveyPage() {
           </div>
           <CardTitle>{steps[currentStep].title}</CardTitle>
           <CardDescription>
-            Help us tailor your learning experience.
+            Help us tailor your learning experience. Fields marked with <span className="text-destructive">*</span> are required.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -110,21 +117,23 @@ export default function SurveyPage() {
             {currentStep === 0 && (
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="domain">Subject/Domain of Interest</Label>
+                  <RequiredLabel htmlFor="domain">Subject/Domain of Interest</RequiredLabel>
                   <Input
                     id="domain"
                     placeholder="e.g., Electrical, Plumbing, HVAC"
                     value={formData.domain}
                     onChange={(e) => handleChange('domain', e.target.value)}
+                    required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="background">Academic Background</Label>
+                  <RequiredLabel htmlFor="background">Academic Background</RequiredLabel>
                   <Select
                     onValueChange={(value) => handleChange('background', value)}
                     value={formData.background}
+                    required
                   >
-                    <SelectTrigger>
+                    <SelectTrigger id="background">
                       <SelectValue placeholder="Select your background" />
                     </SelectTrigger>
                     <SelectContent>
@@ -142,7 +151,7 @@ export default function SurveyPage() {
             {currentStep === 1 && (
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label>What are your primary goals?</Label>
+                  <Label>What are your primary goals? <span className="text-destructive">*</span></Label>
                   <div className="flex flex-col space-y-2">
                     {defaultGoals.map((goal) => (
                       <div key={goal} className="flex items-center space-x-2">
@@ -180,12 +189,13 @@ export default function SurveyPage() {
                   </div>
                 </div>
                  <div className="space-y-2">
-                  <Label htmlFor="role">Which best describes you?</Label>
+                  <RequiredLabel htmlFor="role">Which best describes you?</RequiredLabel>
                   <Select
                     onValueChange={(value) => handleChange('role', value)}
                     value={formData.role}
+                    required
                   >
-                    <SelectTrigger>
+                    <SelectTrigger id="role">
                       <SelectValue placeholder="Select your role" />
                     </SelectTrigger>
                     <SelectContent>
@@ -202,12 +212,13 @@ export default function SurveyPage() {
             {currentStep === 2 && (
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="time">How much time can you commit weekly?</Label>
+                  <RequiredLabel htmlFor="time">How much time can you commit weekly?</RequiredLabel>
                    <Select
                     onValueChange={(value) => handleChange('time', value)}
                     value={formData.time}
+                    required
                   >
-                    <SelectTrigger>
+                    <SelectTrigger id="time">
                       <SelectValue placeholder="Select weekly time commitment" />
                     </SelectTrigger>
                     <SelectContent>
@@ -219,12 +230,13 @@ export default function SurveyPage() {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="motivation">What's your primary motivation?</Label>
+                  <RequiredLabel htmlFor="motivation">What's your primary motivation?</RequiredLabel>
                   <Input
                     id="motivation"
                     placeholder="e.g., Career change, salary increase, hobby"
                     value={formData.motivation}
                     onChange={(e) => handleChange('motivation', e.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -233,32 +245,34 @@ export default function SurveyPage() {
             {currentStep === 3 && (
                  <div className="space-y-4">
                      <div className="space-y-2">
-                        <Label htmlFor="obstacles">What are your biggest obstacles to learning?</Label>
+                        <RequiredLabel htmlFor="obstacles">What are your biggest obstacles to learning?</RequiredLabel>
                         <Input
                             id="obstacles"
                             placeholder="e.g., Lack of time, finding resources"
                             value={formData.obstacles}
                             onChange={(e) => handleChange('obstacles', e.target.value)}
+                            required
                         />
                     </div>
                     <div className="space-y-2">
-                        <Label>Self-Assessed Competency</Label>
+                        <Label>Self-Assessed Competency <span className="text-destructive">*</span></Label>
                         <RadioGroup
                             value={formData.competency}
                             onValueChange={(value) => handleChange('competency', value)}
-                            className="flex space-x-4"
+                            className="flex flex-wrap space-x-4"
+                            required
                         >
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="Beginner" id="beginner" />
-                                <Label htmlFor="beginner">Beginner</Label>
+                                <Label htmlFor="beginner" className="font-normal">Beginner</Label>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="Intermediate" id="intermediate" />
-                                <Label htmlFor="intermediate">Intermediate</Label>
+                                <Label htmlFor="intermediate" className="font-normal">Intermediate</Label>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="Expert" id="expert" />
-                                <Label htmlFor="expert">Expert</Label>
+                                <Label htmlFor="expert" className="font-normal">Expert</Label>
                             </div>
                         </RadioGroup>
                     </div>
