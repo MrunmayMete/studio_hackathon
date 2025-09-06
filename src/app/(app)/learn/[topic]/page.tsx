@@ -9,6 +9,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -16,7 +17,7 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { ArrowLeft, ArrowRight, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 type Question = GenerateMicrolearningQuestionsOutput['questions'][0];
 
@@ -26,7 +27,7 @@ export default function MicrolearningPage({
   params: { topic: string };
 }) {
   const router = useRouter();
-  const topic = decodeURIComponent(params.topic.replace(/-/g, ' '));
+  const topic = useMemo(() => decodeURIComponent(params.topic.replace(/-/g, ' ')), [params.topic]);
   const [data, setData] =
     useState<GenerateMicrolearningQuestionsOutput | null>(null);
   const [isLoading, setIsLoading] = useState(true);
