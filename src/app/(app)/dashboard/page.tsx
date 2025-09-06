@@ -31,8 +31,8 @@ export default function DashboardPage() {
         />
          <ProfileStrengthCard />
       </div>
-      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-3 lg:gap-8">
-        <div className="grid auto-rows-max items-start gap-6 lg:col-span-2 lg:gap-8">
+      <div className="grid grid-cols-1 items-start gap-6 xl:grid-cols-3 xl:gap-8">
+        <div className="grid auto-rows-max items-start gap-6 xl:col-span-2 xl:gap-8">
           <RecommendationCard />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
             <CircleComparison />

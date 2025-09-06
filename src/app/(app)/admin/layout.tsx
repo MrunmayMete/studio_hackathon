@@ -14,7 +14,7 @@ export default function AdminLayout({
         </p>
       </div>
       <AdminTabs />
-      <div>{children}</div>
+      <div className="overflow-x-auto">{children}</div>
     </div>
   );
 }

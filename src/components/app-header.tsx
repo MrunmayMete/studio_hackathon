@@ -3,17 +3,15 @@
 
 import Link from "next/link";
 import {
-  Home,
   Users,
   BookOpen,
   Settings,
   PanelLeft,
   Search,
   Shield,
-  FileText,
-  GraduationCap,
   User,
-  LifeBuoy
+  LifeBuoy,
+  Home
 } from "lucide-react";
 import {
   Sheet,
@@ -34,6 +32,8 @@ import { user } from "@/lib/data";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { SkillsphereLogo } from "@/lib/icons";
 import { useRouter } from "next/navigation";
+import { AppSidebar } from "./app-sidebar";
+import { cn } from "@/lib/utils";
 
 export function AppHeader() {
   const router = useRouter();
@@ -60,41 +60,12 @@ export function AppHeader() {
               <SkillsphereLogo className="h-5 w-5 transition-all group-hover:scale-110" />
               <span className="sr-only">Skillsphere</span>
             </Link>
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search..."
-                className="w-full rounded-lg bg-background pl-8"
-              />
-            </div>
             <Link
-              href="/profile"
+              href="/dashboard"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
-              <User className="h-5 w-5" />
-              Profile
-            </Link>
-            <Link
-              href="/survey"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <FileText className="h-5 w-5" />
-              Survey
-            </Link>
-             <Link
-              href="/learn/Basic-Electrical-Safety"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <GraduationCap className="h-5 w-5" />
-              Learn
-            </Link>
-            <Link
-              href="/circles"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Users className="h-5 w-5" />
-              Circles
+              <Home className="h-5 w-5" />
+              Dashboard
             </Link>
             <Link
               href="/my-learning"
@@ -104,6 +75,13 @@ export function AppHeader() {
               My Learning
             </Link>
             <Link
+              href="/circles"
+              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+            >
+              <Users className="h-5 w-5" />
+              Circles
+            </Link>
+             <Link
               href="/admin/content"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
@@ -117,24 +95,17 @@ export function AppHeader() {
               <Settings className="h-5 w-5" />
               Settings
             </Link>
-             <Link
-              href="/support"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <LifeBuoy className="h-5 w-5" />
-              Support
-            </Link>
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="relative flex-1 md:grow-0">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search..."
-            className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
-          />
-        </div>
+      <div className="relative ml-auto flex-1 md:grow-0">
+        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+        <Input
+          type="search"
+          placeholder="Search..."
+          className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
+        />
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

@@ -9,7 +9,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { generateVideoWithQuiz, GenerateVideoWithQuizOutput } from '@/ai/flows/generate-video-with-quiz-flow';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 
@@ -56,52 +55,54 @@ export default function MyLearningPage() {
                 </p>
             </div>
 
-            <Tabs defaultValue="all">
-                <TabsList>
-                    <TabsTrigger value="all">
-                        <Library className="mr-2 h-4 w-4" />
-                        All
-                    </TabsTrigger>
-                    <TabsTrigger value="videos">
-                        <ListVideo className="mr-2 h-4 w-4" />
-                        Videos
-                    </TabsTrigger>
-                    <TabsTrigger value="articles">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Articles
-                    </TabsTrigger>
-                    <TabsTrigger value="quizzes">
-                        <CheckSquare className="mr-2 h-4 w-4" />
-                        Quizzes
-                    </TabsTrigger>
-                    <TabsTrigger value="ai-suggestions">
-                        <Sparkles className="mr-2 h-4 w-4" />
-                        AI Suggestions
-                    </TabsTrigger>
-                </TabsList>
+            <Tabs defaultValue="all" className="w-full">
+                <div className="overflow-x-auto">
+                  <TabsList>
+                      <TabsTrigger value="all">
+                          <Library className="mr-2 h-4 w-4" />
+                          All
+                      </TabsTrigger>
+                      <TabsTrigger value="videos">
+                          <ListVideo className="mr-2 h-4 w-4" />
+                          Videos
+                      </TabsTrigger>
+                      <TabsTrigger value="articles">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Articles
+                      </TabsTrigger>
+                      <TabsTrigger value="quizzes">
+                          <CheckSquare className="mr-2 h-4 w-4" />
+                          Quizzes
+                      </TabsTrigger>
+                      <TabsTrigger value="ai-suggestions">
+                          <Sparkles className="mr-2 h-4 w-4" />
+                          AI Suggestions
+                      </TabsTrigger>
+                  </TabsList>
+                </div>
                 <TabsContent value="all" className="mt-6">
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {allContent.map((item) => (
                             <LearningItemCard key={item.id} item={item} />
                         ))}
                     </div>
                 </TabsContent>
                 <TabsContent value="videos" className="mt-6">
-                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {videoContent.map((item) => (
                             <LearningItemCard key={item.id} item={item} />
                         ))}
                     </div>
                 </TabsContent>
                 <TabsContent value="articles" className="mt-6">
-                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {articleContent.map((item) => (
                             <LearningItemCard key={item.id} item={item} />
                         ))}
                     </div>
                 </TabsContent>
                 <TabsContent value="quizzes" className="mt-6">
-                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {quizContent.map((item) => (
                             <LearningItemCard key={item.id} item={item} />
                         ))}

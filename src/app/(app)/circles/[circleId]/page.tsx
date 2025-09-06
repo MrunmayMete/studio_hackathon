@@ -64,8 +64,8 @@ export default function CircleDetailPage({
         </CardContent>
       </Card>
 
-       <Tabs defaultValue="forum">
-        <TabsList className="grid w-full grid-cols-3">
+       <Tabs defaultValue="forum" className="w-full">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3">
           <TabsTrigger value="forum"><MessageSquare className="mr-2 h-4 w-4" />Forum</TabsTrigger>
           <TabsTrigger value="leaderboard"><Trophy className="mr-2 h-4 w-4" />Leaderboard</TabsTrigger>
           <TabsTrigger value="members"><Users className="mr-2 h-4 w-4" />Members</TabsTrigger>
