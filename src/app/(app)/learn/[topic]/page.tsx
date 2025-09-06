@@ -18,8 +18,31 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { ArrowLeft, ArrowRight, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useMemo } from 'react';
+import { use } from 'react';
 
 type Question = GenerateMicrolearningQuestionsOutput['questions'][0];
+
+const getCompetency = (topic: string) => {
+    if (typeof window === 'undefined') return 'Beginner';
+    const competencies = JSON.parse(localStorage.getItem('userCompetencies') || '{}');
+    return competencies[topic] || 'Beginner';
+}
+
+const updateCompetency = (topic: string, score: number, numQuestions: number) => {
+    const competencies = JSON.parse(localStorage.getItem('userCompetencies') || '{}');
+    const currentLevel = competencies[topic] || 'Beginner';
+    const percentage = (score / numQuestions) * 100;
+
+    let newLevel = currentLevel;
+    if (percentage > 80 && currentLevel === 'Beginner') newLevel = 'Intermediate';
+    if (percentage > 80 && currentLevel === 'Intermediate') newLevel = 'Advanced';
+    if (percentage < 40 && currentLevel === 'Advanced') newLevel = 'Intermediate';
+    if (percentage < 40 && currentLevel === 'Intermediate') newLevel = 'Beginner';
+
+    competencies[topic] = newLevel;
+    localStorage.setItem('userCompetencies', JSON.stringify(competencies));
+}
+
 
 export default function MicrolearningPage({
   params,
@@ -27,10 +50,8 @@ export default function MicrolearningPage({
   params: { topic: string };
 }) {
   const router = useRouter();
-  const topic = useMemo(() => {
-    const encodedTopic = params.topic || '';
-    return decodeURIComponent(encodedTopic.replace(/-/g, ' '));
-  }, [params.topic]);
+  const { topic: encodedTopic } = use(Promise.resolve(params));
+  const topic = useMemo(() => decodeURIComponent(encodedTopic.replace(/-/g, ' ')), [encodedTopic]);
   
   const [data, setData] =
     useState<GenerateMicrolearningQuestionsOutput | null>(null);
@@ -44,7 +65,9 @@ export default function MicrolearningPage({
     if (!topic) return;
     
     setIsLoading(true);
-    generateMicrolearningQuestions({ topic })
+    const competencyLevel = getCompetency(topic);
+
+    generateMicrolearningQuestions({ topic, competencyLevel })
       .then(setData)
       .catch((err) => {
         console.error('Error generating questions', err);
@@ -85,6 +108,7 @@ export default function MicrolearningPage({
 
     setScore(correctAnswers);
     setShowResults(true);
+    updateCompetency(topic, correctAnswers, data.questions.length);
   };
   
   const currentQuestion = data?.questions[currentQuestionIndex];
@@ -108,7 +132,7 @@ export default function MicrolearningPage({
           <CardHeader>
             <CardTitle>Quiz Results: {topic}</CardTitle>
             <CardDescription>
-              You scored {score} out of {data?.questions.length}!
+              You scored {score} out of {data?.questions.length}! Your competency level is now '{getCompetency(topic)}'.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -138,7 +162,7 @@ export default function MicrolearningPage({
           <CardHeader>
             <CardTitle>Micro-Quiz: {topic}</CardTitle>
             <CardDescription>
-              Question {currentQuestionIndex + 1} of {data?.questions.length}
+              Question {currentQuestionIndex + 1} of {data?.questions.length} (Difficulty: {getCompetency(topic)})
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">

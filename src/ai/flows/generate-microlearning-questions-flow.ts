@@ -19,6 +19,7 @@ const QuestionSchema = z.object({
 
 const GenerateMicrolearningQuestionsInputSchema = z.object({
   topic: z.string().describe('The topic for which to generate questions.'),
+  competencyLevel: z.string().describe('The competency level of the user (e.g., Beginner, Intermediate, Advanced).'),
 });
 export type GenerateMicrolearningQuestionsInput = z.infer<typeof GenerateMicrolearningQuestionsInputSchema>;
 
@@ -39,12 +40,13 @@ const generateMicrolearningQuestionsPrompt = ai.definePrompt({
   output: {schema: GenerateMicrolearningQuestionsOutputSchema},
   prompt: `You are an expert educator tasked with creating microlearning materials.
 
-Generate a set of 3 multiple-choice questions with 4 options each and correct answers based on the following topic:
+Generate a set of 3 multiple-choice questions with 4 options each and correct answers based on the following topic and user competency.
 
 Topic: {{{topic}}}
+Competency Level: {{{competencyLevel}}}
 
 Instructions:
-- Keep the questions beginner-friendly, suitable for vocational learners.
+- Tailor the question difficulty to the user's competency level.
 - Provide clear and concise questions focused on practical knowledge.
 - For each question, include:
     1. The question text.

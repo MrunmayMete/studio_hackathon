@@ -37,9 +37,10 @@ function AssessmentComponent() {
   useEffect(() => {
     const domain = searchParams.get('domain')
     const goals = searchParams.get('goals')?.split(',')
+    const competencyLevel = searchParams.get('competency') || 'Beginner';
 
     if (domain && goals) {
-      generateAssessment({ domain, goals })
+      generateAssessment({ domain, goals, competencyLevel })
         .then((data: GenerateAssessmentOutput) => {
           setQuestions(data.questions)
         })
@@ -66,7 +67,10 @@ function AssessmentComponent() {
 
     let newScore = 0
     const incorrectTopics: string[] = []
+    const userCompetencies: Record<string, string> = {};
+
     questions.forEach((q, index) => {
+      userCompetencies[q.topic] = 'Beginner'; // Start everyone at beginner for each topic
       if (answers[index] === q.correctAnswer) {
         newScore += 1
       } else {
@@ -78,8 +82,9 @@ function AssessmentComponent() {
     setScore(newScore)
     setSubmitted(true)
     
-    // Save weak topics and score to localStorage
+    // Save weak topics, initial competencies, and score to localStorage
     localStorage.setItem('weakTopics', JSON.stringify(incorrectTopics));
+    localStorage.setItem('userCompetencies', JSON.stringify(userCompetencies));
     localStorage.setItem('diagnosticScore', scorePercentage.toString());
   }
 

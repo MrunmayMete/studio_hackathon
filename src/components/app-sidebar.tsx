@@ -34,25 +34,22 @@ const navLinks = [
   { href: '/admin/content', icon: Shield, label: 'Admin' },
 ];
 
+const secondaryNavLinks = [
+    { href: '#', icon: Search, label: 'Search' },
+    { href: '/support', icon: LifeBuoy, label: 'Help' },
+    { href: '/settings', icon: Settings, label: 'Settings' },
+];
+
 export function AppSidebar() {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === '/learn') {
-        return pathname.startsWith('/learn');
-    }
-     if (href === '/my-learning') {
-        return pathname.startsWith('/my-learning');
-    }
-     if (href === '/circles') {
-        return pathname.startsWith('/circles');
-    }
-    if (href === '/admin/content') {
-        return pathname.startsWith('/admin');
-    }
-     if (href === '/dashboard') {
-        return pathname === href;
-    }
+    if (href === '/learn') return pathname.startsWith('/learn');
+    if (href === '/my-learning') return pathname.startsWith('/my-learning');
+    if (href === '/circles') return pathname.startsWith('/circles');
+    if (href === '/admin/content') return pathname.startsWith('/admin');
+    if (href === '/settings') return pathname.startsWith('/settings');
+    if (href === '/support') return pathname.startsWith('/support');
     return pathname === href;
   };
 
@@ -91,41 +88,23 @@ export function AppSidebar() {
           ))}
         </nav>
         <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Search className="h-5 w-5" />
-                <span className="sr-only">Search</span>
-              </button>
-            </TooltipTrigger>
-            <TooltipContent side="right">Search</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <LifeBuoy className="h-5 w-5" />
-                <span className="sr-only">Help</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Help</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Settings className="h-5 w-5" />
-                <span className="sr-only">Settings</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Settings</TooltipContent>
-          </Tooltip>
+          {secondaryNavLinks.map(({ href, icon: Icon, label }) => (
+            <Tooltip key={label}>
+                <TooltipTrigger asChild>
+                    <Link
+                    href={href}
+                    className={cn(
+                        'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
+                        isActive(href) && 'bg-accent text-accent-foreground'
+                    )}
+                    >
+                    <Icon className="h-5 w-5" />
+                    <span className="sr-only">{label}</span>
+                    </Link>
+                </TooltipTrigger>
+                <TooltipContent side="right">{label}</TooltipContent>
+            </Tooltip>
+           ))}
         </nav>
       </TooltipProvider>
     </aside>

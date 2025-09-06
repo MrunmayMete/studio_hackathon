@@ -12,7 +12,8 @@ import {
   Shield,
   FileText,
   GraduationCap,
-  User
+  User,
+  LifeBuoy
 } from "lucide-react";
 import {
   Sheet,
@@ -110,11 +111,18 @@ export function AppHeader() {
               Admin
             </Link>
             <Link
-              href="#"
+              href="/settings"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <Settings className="h-5 w-5" />
               Settings
+            </Link>
+             <Link
+              href="/support"
+              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+            >
+              <LifeBuoy className="h-5 w-5" />
+              Support
             </Link>
           </nav>
         </SheetContent>
@@ -137,8 +145,8 @@ export function AppHeader() {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => router.push('/profile')}>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push('/settings')}>Settings</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push('/support')}>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => router.push('/login')}>Logout</DropdownMenuItem>
         </DropdownMenuContent>

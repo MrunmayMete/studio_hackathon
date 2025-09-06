@@ -78,10 +78,13 @@ export default function SurveyPage() {
     // In a real app, you would save this data to a database.
     localStorage.setItem('surveyCompleted', 'true');
     localStorage.setItem('userGoals', JSON.stringify(finalGoals));
+    localStorage.setItem('userCompetency', formData.competency);
+
 
     const params = new URLSearchParams()
     params.set('domain', formData.domain)
     params.set('goals', finalGoals.join(','))
+    params.set('competency', formData.competency)
     router.push(`/assessment?${params.toString()}`)
   }
   
