@@ -75,10 +75,10 @@ export default function SurveyPage() {
         finalGoals.push(otherGoal.trim());
     }
 
-    console.log('Survey Data:', {...formData, goals: finalGoals});
-    // In a real app, you would save this data.
-    // We use localStorage to simulate that the user has completed the survey.
+    // In a real app, you would save this data to a database.
     localStorage.setItem('surveyCompleted', 'true');
+    localStorage.setItem('userGoals', JSON.stringify(finalGoals));
+
     const params = new URLSearchParams()
     params.set('domain', formData.domain)
     params.set('goals', finalGoals.join(','))
