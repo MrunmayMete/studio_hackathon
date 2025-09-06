@@ -94,37 +94,31 @@ export function AppHeader() {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="relative ml-auto flex-1 md:grow-0">
-        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-        type="search"
-        placeholder="Search..."
-        className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
-        />
+      <div className="ml-auto">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="overflow-hidden rounded-full"
+            >
+              <Avatar>
+                <AvatarImage src={user.avatar} alt={user.name} data-ai-hint="person" />
+                <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => router.push('/profile')}>Profile</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push('/settings')}>Settings</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push('/support')}>Support</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => router.push('/login')}>Logout</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="icon"
-            className="overflow-hidden rounded-full"
-          >
-            <Avatar>
-              <AvatarImage src={user.avatar} alt={user.name} data-ai-hint="person" />
-              <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
-            </Avatar>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => router.push('/profile')}>Profile</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push('/settings')}>Settings</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push('/support')}>Support</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => router.push('/login')}>Logout</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
     </header>
   );
 }
