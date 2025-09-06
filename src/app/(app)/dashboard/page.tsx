@@ -9,7 +9,7 @@ import { ProfileStrengthCard } from "@/components/dashboard/profile-strength-car
 
 export default function DashboardPage() {
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
         <StatCard 
           title="Day Streak" 
@@ -43,6 +43,6 @@ export default function DashboardPage() {
            <ActivityFeed />
         </div>
       </div>
-    </>
+    </div>
   );
 }

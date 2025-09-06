@@ -42,7 +42,7 @@ export default function CircleDetailPage({
           />
            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
            <div className="absolute bottom-6 left-6">
-             <h1 className="text-4xl font-bold tracking-tight text-white">{circle.name}</h1>
+             <h1 className="text-2xl md:text-4xl font-bold tracking-tight text-white">{circle.name}</h1>
              <div className="flex items-center gap-4 text-white/90 pt-2">
                 <div className="flex items-center gap-2">
                     <Users className="h-5 w-5" />
@@ -65,7 +65,7 @@ export default function CircleDetailPage({
       </Card>
 
        <Tabs defaultValue="forum">
-        <TabsList>
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="forum"><MessageSquare className="mr-2 h-4 w-4" />Forum</TabsTrigger>
           <TabsTrigger value="leaderboard"><Trophy className="mr-2 h-4 w-4" />Leaderboard</TabsTrigger>
           <TabsTrigger value="members"><Users className="mr-2 h-4 w-4" />Members</TabsTrigger>

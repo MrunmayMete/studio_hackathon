@@ -35,7 +35,6 @@ const navLinks = [
 ];
 
 const secondaryNavLinks = [
-    { href: '#', icon: Search, label: 'Search' },
     { href: '/support', icon: LifeBuoy, label: 'Help' },
     { href: '/settings', icon: Settings, label: 'Settings' },
 ];
@@ -88,6 +87,14 @@ export function AppSidebar() {
           ))}
         </nav>
         <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+           <div className="relative">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                    type="search"
+                    placeholder="Search..."
+                    className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
+                />
+            </div>
           {secondaryNavLinks.map(({ href, icon: Icon, label }) => (
             <Tooltip key={label}>
                 <TooltipTrigger asChild>
