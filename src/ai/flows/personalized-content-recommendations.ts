@@ -34,7 +34,6 @@ const RecommendContentOutputSchema = z.object({
     .describe('The type of content recommended (video, quiz, flashcards).'),
   contentTitle: z.string().describe('The title of the recommended content.'),
   contentUrl: z.string().describe('The URL of the recommended content. For quizzes, this should be in the format /learn/Topic-Name.'),
-  reason: z.string().describe('A very short, one-sentence reason for this recommendation.'),
 });
 export type RecommendContentOutput = z.infer<typeof RecommendContentOutputSchema>;
 
@@ -58,13 +57,8 @@ const recommendContentPrompt = ai.definePrompt({
   Goals: {{{goals}}}
   Preferred Content Type: {{{preferredContentType}}}
 
-  Based on this information, recommend the next best content. Provide a very short, one-sentence reason for your recommendation.
-  For quizzes, create a URL like '/learn/Topic-Name-In-URL-Format'. For other types, you can use placeholder URLs.
-  
-  contentType:
-  contentTitle:
-  contentUrl:
-  reason:`,
+  Based on this information, recommend the next best content.
+  For quizzes, create a URL like '/learn/Topic-Name-In-URL-Format'. For other types, you can use placeholder URLs.`,
 });
 
 const recommendContentFlow = ai.defineFlow(

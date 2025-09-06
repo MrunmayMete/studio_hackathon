@@ -119,7 +119,6 @@ export function RecommendationCard() {
                       </div>
                       <div className='flex-1'>
                         <p className='font-semibold leading-tight'>{rec.contentTitle}</p>
-                        <p className='text-xs text-muted-foreground line-clamp-2'>{rec.reason}</p>
                       </div>
                       <ArrowRight className="ml-auto h-4 w-4" />
                     </Link>
