@@ -26,7 +26,7 @@ const navLinks = [
   { href: '/learn', icon: GraduationCap, label: 'Learn' },
   { href: '/circles', icon: Users, label: 'Circles' },
   { href: '/my-learning', icon: BookOpen, label: 'My Learning' },
-  { href: '#', icon: Shield, label: 'Admin' },
+  { href: '/admin/content', icon: Shield, label: 'Admin' },
 ];
 
 export function AppSidebar() {
@@ -41,6 +41,9 @@ export function AppSidebar() {
     }
      if (href === '/circles') {
         return pathname.startsWith('/circles');
+    }
+    if (href === '/admin/content') {
+        return pathname.startsWith('/admin');
     }
      if (href === '/dashboard') {
         return pathname === href;

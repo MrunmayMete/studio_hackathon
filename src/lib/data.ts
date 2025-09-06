@@ -212,4 +212,51 @@ export const myLearningContent: MyLearningContent[] = [
         topics: ['OSHA', 'Safety'],
         status: 'Not Started'
     },
+];
+
+export const enterpriseGroups = [
+    {
+        id: 'eg1',
+        name: 'ACME Inc. Apprentices',
+        members: [
+            { id: 'u5', name: 'John Smith', email: 'john.s@acme.com', avatar: 'https://picsum.photos/100/100?random=5' },
+            { id: 'u6', name: 'Jane Miller', email: 'jane.m@acme.com', avatar: 'https://picsum.photos/100/100?random=6' },
+        ]
+    },
+    {
+        id: 'eg2',
+        name: 'BuildWell Co. Trainees',
+        members: [
+            { id: 'u7', name: 'Peter Jones', email: 'p.jones@buildwell.co', avatar: 'https://picsum.photos/100/100?random=7' },
+            { id: 'u8', name: 'Emily White', email: 'e.white@buildwell.co', avatar: 'https://picsum.photos/100/100?random=8' },
+            { id: 'u9', name: 'Chris Green', email: 'c.green@buildwell.co', avatar: 'https://picsum.photos/100/100?random=9' },
+        ]
+    }
+];
+
+export const courseAssignments = [
+    {
+        id: 'ca1',
+        courseName: 'Introduction to Residential Wiring',
+        assigneeName: 'ACME Inc. Apprentices',
+        assigneeType: 'group',
+        dueDate: '2024-08-15',
+        status: 'In Progress'
+    },
+    {
+        id: 'ca2',
+        courseName: 'Quiz: OSHA Safety Standards',
+        assigneeName: 'Peter Jones',
+        assigneeType: 'user',
+        dueDate: '2024-07-30',
+        status: 'Not Started'
+    },
+    {
+        id: 'ca3',
+        courseName: 'Understanding the National Electrical Code (NEC)',
+        assigneeName: 'BuildWell Co. Trainees',
+        assigneeType: 'group',
+        dueDate: '2024-09-01',
+        status: 'Not Started'
+    }
 ]

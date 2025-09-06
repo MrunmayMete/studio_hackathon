@@ -86,7 +86,7 @@ export function AppHeader() {
               My Learning
             </Link>
             <Link
-              href="#"
+              href="/admin/content"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <Shield className="h-5 w-5" />
