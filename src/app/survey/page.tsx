@@ -65,7 +65,9 @@ export default function SurveyPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log('Survey Data:', formData)
-    // In a real app, you would save this data
+    // In a real app, you would save this data.
+    // We use localStorage to simulate that the user has completed the survey.
+    localStorage.setItem('surveyCompleted', 'true');
     router.push('/assessment')
   }
   

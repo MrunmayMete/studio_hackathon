@@ -18,11 +18,21 @@ import { useRouter } from "next/navigation"
 export default function LoginPage() {
   const router = useRouter()
 
+  const checkSurveyAndRedirect = () => {
+    // In a real app, this check would be against a user record in a database.
+    // Here, we use localStorage to simulate if a user has completed the survey.
+    const surveyCompleted = localStorage.getItem('surveyCompleted')
+    if (surveyCompleted) {
+      router.push('/dashboard')
+    } else {
+      router.push('/survey')
+    }
+  }
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     // In a real app, you'd handle Firebase auth here.
-    // On success, redirect to the survey.
-    router.push("/survey")
+    checkSurveyAndRedirect()
   }
   
   const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -74,7 +84,7 @@ export default function LoginPage() {
                 </span>
               </div>
             </div>
-            <Button variant="outline" className="w-full" onClick={() => router.push('/survey')}>
+            <Button variant="outline" className="w-full" onClick={checkSurveyAndRedirect}>
               <GoogleIcon className="mr-2 h-4 w-4" />
               Google
             </Button>
