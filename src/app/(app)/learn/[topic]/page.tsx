@@ -27,7 +27,8 @@ export default function MicrolearningPage({
   params: { topic: string };
 }) {
   const router = useRouter();
-  const topic = useMemo(() => decodeURIComponent(params.topic.replace(/-/g, ' ')), [params.topic]);
+  const { topic: encodedTopic } = params;
+  const topic = useMemo(() => decodeURIComponent(encodedTopic.replace(/-/g, ' ')), [encodedTopic]);
   const [data, setData] =
     useState<GenerateMicrolearningQuestionsOutput | null>(null);
   const [isLoading, setIsLoading] = useState(true);
