@@ -68,7 +68,10 @@ export default function SurveyPage() {
     // In a real app, you would save this data.
     // We use localStorage to simulate that the user has completed the survey.
     localStorage.setItem('surveyCompleted', 'true');
-    router.push('/assessment')
+    const params = new URLSearchParams()
+    params.set('domain', formData.domain)
+    params.set('goals', formData.goals.join(','))
+    router.push(`/assessment?${params.toString()}`)
   }
   
   const progress = ((currentStep + 1) / steps.length) * 100
