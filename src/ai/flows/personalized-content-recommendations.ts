@@ -5,7 +5,7 @@
  *
  * - recommendContent - A function that recommends learning content based on user data.
  * - RecommendContentInput - The input type for the recommendContent function.
- * - RecommendContentOutput - The return type for the recommendContent function.
+ * - RecommendContentOutput - The return type for the recommendContentOutput function.
  */
 
 import {ai} from '@/ai/genkit';
@@ -33,7 +33,7 @@ const RecommendContentOutputSchema = z.object({
     .string()
     .describe('The type of content recommended (video, quiz, flashcards).'),
   contentTitle: z.string().describe('The title of the recommended content.'),
-  contentUrl: z.string().describe('The URL of the recommended content.'),
+  contentUrl: z.string().describe('The URL of the recommended content. For quizzes, this should be in the format /learn/Topic-Name.'),
   reason: z.string().describe('The reasoning behind this recommendation.'),
 });
 export type RecommendContentOutput = z.infer<typeof RecommendContentOutputSchema>;
@@ -59,6 +59,8 @@ const recommendContentPrompt = ai.definePrompt({
   Preferred Content Type: {{{preferredContentType}}}
 
   Based on this information, what content type and specific content (title and URL) do you recommend, and why?
+  For quizzes, create a URL like '/learn/Topic-Name-In-URL-Format'. For other types, you can use placeholder URLs.
+  
   contentType:
   contentTitle:
   contentUrl:

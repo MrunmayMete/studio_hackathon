@@ -6,7 +6,8 @@ import {
   Settings,
   Shield,
   LifeBuoy,
-  FileText
+  FileText,
+  GraduationCap
 } from "lucide-react";
 
 import {
@@ -52,6 +53,18 @@ export function AppSidebar() {
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">Survey</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="/learn/Basic-Circuitry"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <GraduationCap className="h-5 w-5" />
+                <span className="sr-only">Learn</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Learn</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>

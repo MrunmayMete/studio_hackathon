@@ -9,7 +9,8 @@ import {
   PanelLeft,
   Search,
   Shield,
-  FileText
+  FileText,
+  GraduationCap
 } from "lucide-react";
 import {
   Sheet,
@@ -69,6 +70,13 @@ export function AppHeader() {
             >
               <FileText className="h-5 w-5" />
               Survey
+            </Link>
+             <Link
+              href="/learn/Basic-Electrical-Safety"
+              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+            >
+              <GraduationCap className="h-5 w-5" />
+              Learn
             </Link>
             <Link
               href="#"
