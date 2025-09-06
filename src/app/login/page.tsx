@@ -21,8 +21,8 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     // In a real app, you'd handle Firebase auth here.
-    // On success, redirect to the dashboard.
-    router.push("/dashboard")
+    // On success, redirect to the survey.
+    router.push("/survey")
   }
   
   const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -49,8 +49,8 @@ export default function LoginPage() {
         </Link>
         <Card>
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Welcome Back</CardTitle>
-            <CardDescription>Sign in to continue your learning journey.</CardDescription>
+            <CardTitle className="text-2xl">Welcome</CardTitle>
+            <CardDescription>Sign in or create an account to start your learning journey.</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
@@ -62,7 +62,7 @@ export default function LoginPage() {
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" type="password" required />
               </div>
-              <Button type="submit" className="w-full">Sign In</Button>
+              <Button type="submit" className="w-full">Continue</Button>
             </form>
             <div className="relative my-4">
               <div className="absolute inset-0 flex items-center">
@@ -74,19 +74,11 @@ export default function LoginPage() {
                 </span>
               </div>
             </div>
-            <Button variant="outline" className="w-full" onClick={() => router.push('/dashboard')}>
+            <Button variant="outline" className="w-full" onClick={() => router.push('/survey')}>
               <GoogleIcon className="mr-2 h-4 w-4" />
               Google
             </Button>
           </CardContent>
-          <CardFooter className="flex justify-center text-sm">
-            <p className="text-muted-foreground">
-              Don't have an account?{' '}
-              <Link href="#" className="font-medium text-primary hover:underline">
-                Sign up
-              </Link>
-            </p>
-          </CardFooter>
         </Card>
       </div>
     </div>
