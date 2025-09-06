@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PlusCircle, Calendar as CalendarIcon, User, BookOpen } from "lucide-react";
+import { PlusCircle, Calendar as CalendarIcon, User, BookOpen, Users } from "lucide-react";
 import {
   Table,
   TableBody,
