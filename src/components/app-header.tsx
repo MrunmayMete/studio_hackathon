@@ -57,6 +57,14 @@ export function AppHeader() {
               <SkillsphereLogo className="h-5 w-5 transition-all group-hover:scale-110" />
               <span className="sr-only">Skillsphere</span>
             </Link>
+            <div className="relative">
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search..."
+                className="w-full rounded-lg bg-background pl-8"
+              />
+            </div>
             <Link
               href="/survey"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
@@ -102,14 +110,7 @@ export function AppHeader() {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="relative ml-auto flex-1 md:grow-0">
-        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          type="search"
-          placeholder="Search..."
-          className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
-        />
-      </div>
+      <div className="flex-1" />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

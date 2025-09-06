@@ -10,6 +10,7 @@ import {
   LifeBuoy,
   FileText,
   GraduationCap,
+  Search
 } from 'lucide-react';
 
 import {
@@ -20,6 +21,7 @@ import {
 } from '@/components/ui/tooltip';
 import { SkillsphereLogo } from '@/lib/icons';
 import { cn } from '@/lib/utils';
+import { Input } from './ui/input';
 
 const navLinks = [
   { href: '/survey', icon: FileText, label: 'Survey' },
@@ -86,6 +88,17 @@ export function AppSidebar() {
           ))}
         </nav>
         <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <Search className="h-5 w-5" />
+                <span className="sr-only">Search</span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="right">Search</TooltipContent>
+          </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
