@@ -6,6 +6,7 @@ import {
   Settings,
   Shield,
   LifeBuoy,
+  FileText
 } from "lucide-react";
 
 import {
@@ -32,13 +33,25 @@ export function AppSidebar() {
             <TooltipTrigger asChild>
               <Link
                 href="/dashboard"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Home className="h-5 w-5" />
                 <span className="sr-only">Dashboard</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">Dashboard</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="/survey"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <FileText className="h-5 w-5" />
+                <span className="sr-only">Survey</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Survey</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
